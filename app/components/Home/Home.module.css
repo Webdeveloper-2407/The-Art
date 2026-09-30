@@ -1,0 +1,5 @@
+.siteShell {
+  min-height: 100vh;
+  overflow-x: clip;
+  background: #05090e;
+}

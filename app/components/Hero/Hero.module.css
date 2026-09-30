@@ -1,0 +1,497 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  background: #061322;
+}
+
+/*
+  The supplied home-hero.png is already composed at 1855x848, the exact
+  reference canvas. fill keeps the entire artwork visible instead of using
+  cover, which can crop the statue/pillars and right-side architecture.
+*/
+
+.background {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: fill !important;
+  object-position: center center !important;
+}
+
+/*
+  Moderate navy grading. The edge scenery remains bright enough to preserve
+  the pyramids, statue, mountains and Colosseum. Text sits above this layer.
+*/
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse 59% 64% at 51% 40%,
+      rgba(7, 25, 47, 0.62) 0%,
+      rgba(7, 25, 47, 0.43) 33%,
+      rgba(7, 25, 47, 0.19) 59%,
+      rgba(7, 25, 47, 0.04) 79%,
+      rgba(7, 25, 47, 0) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 11, 22, 0.26) 0%,
+      rgba(3, 11, 22, 0.02) 28%,
+      rgba(3, 11, 22, 0.10) 68%,
+      rgba(3, 11, 22, 0.22) 100%
+    );
+}
+
+.content {
+  position: absolute;
+  z-index: 2;
+  top: clamp(108px, 14.75vh, 126px);
+  left: 50%;
+  width: min(1240px, 80vw);
+  margin: 0;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #fff;
+}
+
+/* Soft navy focus behind only the text block. */
+
+.content::before {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: min(1120px, 76vw);
+  height: 500px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  content: "";
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(6, 22, 42, 0.56) 0%,
+    rgba(6, 22, 42, 0.32) 40%,
+    rgba(6, 22, 42, 0.10) 70%,
+    transparent 84%
+  );
+
+  filter: blur(1px);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin: 0 0 24px;
+}
+
+.eyebrow span {
+  flex: 0 0 auto;
+  width: 95px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #f0bd4f);
+  box-shadow: 0 0 6px rgba(240, 189, 79, 0.22);
+}
+
+.eyebrow span:last-child {
+  background: linear-gradient(90deg, #f0bd4f, transparent);
+}
+
+.eyebrow p {
+  margin: 0;
+  color: #f4c65d;
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: clamp(12px, 0.92vw, 16px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.content h1 {
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(50px, 4.65vw, 86px);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.022em;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.42),
+    0 0 26px rgba(4, 15, 29, 0.24);
+}
+
+.content h1 span {
+  display: block;
+  color: #f9f3e8;
+
+  background: linear-gradient(
+    96deg,
+    #f8f3e8 0%,
+    #fffdf7 46%,
+    #f9df9b 76%,
+    #efbd4c 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.divider {
+  width: 325px;
+  max-width: 44%;
+  height: 2px;
+  margin: 15px auto 19px;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #d99a2a 19%,
+    #ffd86f 50%,
+    #d99a2a 81%,
+    transparent 100%
+  );
+
+  box-shadow:
+    0 0 9px rgba(239, 185, 71, 0.45),
+    0 0 22px rgba(239, 185, 71, 0.10);
+}
+
+.description {
+  max-width: 840px;
+  margin: 0 auto;
+  color: #ffffff;
+
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(15px, 1.02vw, 19px);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0.008em;
+
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
+}
+
+/* =========================================================
+   BUTTONS + SCROLL HINT
+   ========================================================= */
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Keep both buttons on the same row */
+  flex-wrap: wrap;
+
+  gap: 21px;
+  margin-top: 24px;
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 59px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  padding: 0 26px;
+  border-radius: 2px;
+  text-decoration: none;
+
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.primaryButton {
+  min-width: 315px;
+
+  border: 2px solid #f1bd46;
+  color: #f4c55c;
+  background: rgba(5, 12, 19, 0.66);
+
+  box-shadow: 0 0 20px rgba(235, 182, 67, 0.08);
+}
+
+.secondaryButton {
+  min-width: 324px;
+
+  border: 1px solid rgba(248, 205, 103, 0.9);
+  color: #0f0d08;
+
+  background: linear-gradient(
+    135deg,
+    #f9d26c 0%,
+    #e9ad46 100%
+  );
+
+  box-shadow: 0 10px 30px rgba(232, 173, 63, 0.13);
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-2px);
+}
+
+.primaryButton:hover {
+  box-shadow: 0 0 28px rgba(235, 182, 67, 0.18);
+}
+
+.secondaryButton:hover {
+  box-shadow: 0 12px 34px rgba(232, 173, 63, 0.22);
+}
+
+/*
+  IMPORTANT:
+  The scroll hint is no longer absolutely positioned over the buttons.
+  It becomes a full-width row underneath them.
+*/
+
+.scrollHint {
+  position: static;
+
+  flex: 0 0 100%;
+  width: 100%;
+
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 2px;
+
+  color: #fff;
+  text-decoration: none;
+
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.3em;
+  white-space: nowrap;
+
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.56);
+}
+
+.scrollArrow {
+  display: block;
+
+  color: #f5c658;
+  font-size: 39px;
+  line-height: 0.72;
+
+  text-shadow: 0 0 12px rgba(246, 198, 91, 0.26);
+
+  animation: arrowBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes arrowBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* =========================================================
+   LARGE TABLET / SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .content {
+    width: min(1100px, 86vw);
+  }
+
+  .content h1 {
+    font-size: clamp(45px, 5.4vw, 72px);
+  }
+
+  .description {
+    max-width: 790px;
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .content {
+    width: min(760px, 92vw);
+    top: 106px;
+  }
+
+  .eyebrow {
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .eyebrow span {
+    width: 58px;
+  }
+
+  .eyebrow p {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+  }
+
+  .content h1 {
+    font-size: clamp(39px, 7.4vw, 60px);
+  }
+
+  .description {
+    max-width: 680px;
+    font-size: 14px;
+  }
+
+  .actions {
+    gap: 14px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    min-width: 260px;
+  }
+
+  /*
+    Keep scroll hint below the button row.
+    No absolute bottom positioning anymore.
+  */
+
+  .scrollHint {
+    margin-top: 2px;
+  }
+
+  .scrollArrow {
+    font-size: 36px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .content {
+    width: min(620px, 92vw);
+    top: 92px;
+  }
+
+  .content::before {
+    width: 120vw;
+    height: 460px;
+  }
+
+  .eyebrow {
+    gap: 9px;
+    margin-bottom: 15px;
+  }
+
+  .eyebrow span {
+    width: 30px;
+  }
+
+  .eyebrow p {
+    font-size: 8px;
+    letter-spacing: 0.17em;
+  }
+
+  .content h1 {
+    font-size: clamp(31px, 8.7vw, 51px);
+    line-height: 1.01;
+  }
+
+  .divider {
+    width: 250px;
+    max-width: 64%;
+    margin: 13px auto 14px;
+  }
+
+  .description {
+    max-width: 570px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /*
+    Mobile buttons become vertical,
+    and scroll hint stays below both buttons.
+  */
+
+  .actions {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: min(100%, 330px);
+    min-width: 0;
+    min-height: 54px;
+  }
+
+  .scrollHint {
+    flex: none;
+    width: auto;
+    margin-top: 4px;
+
+    font-size: 9px;
+  }
+
+  .scrollArrow {
+    font-size: 34px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 430px) {
+  .content h1 {
+    font-size: 30px;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+
+  .scrollHint {
+    font-size: 8px;
+    letter-spacing: 0.25em;
+  }
+
+  .scrollArrow {
+    font-size: 32px;
+  }
+}

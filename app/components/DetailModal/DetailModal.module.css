@@ -1,0 +1,25 @@
+.overlay { position: fixed; inset: 0; z-index: 1150; display: grid; place-items: center; padding: 18px; overflow: auto; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); }
+.modal { position: relative; width: min(1100px, 100%); max-height: 94vh; overflow: auto; border: 1px solid rgba(241,190,74,0.7); border-radius: 22px; background: #060c12; box-shadow: 0 30px 100px rgba(0,0,0,0.6); }
+.close { position: absolute; z-index: 4; top: 16px; right: 16px; width: 42px; height: 42px; border: 1px solid rgba(255,210,100,0.7); border-radius: 50%; color: #f8cb60; background: rgba(2,7,11,0.76); font-size: 27px; cursor: pointer; }
+.hero { position: relative; min-height: 360px; }
+.heroImage { object-fit: cover; }
+.heroShade { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(2,7,11,0.96), rgba(2,7,11,0.07) 70%); }
+.heroText { position: absolute; inset: auto 0 0; padding: 34px 38px; }
+.heroText p { margin: 0 0 11px; color: #f6c75c; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; }
+.heroText h2 { margin: 0; color: #fff; font: 500 clamp(42px, 6vw, 70px)/1 var(--font-display), Georgia, serif; }
+.body { padding: 34px 38px 42px; }
+.metaGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding-bottom: 25px; margin-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.metaGrid div { min-height: 70px; padding-right: 14px; border-right: 1px solid rgba(255,255,255,0.08); }
+.metaGrid div:last-child { border-right: 0; }
+.metaGrid small { display: block; margin-bottom: 8px; color: #f3c558; font-size: 10px; font-weight: 800; letter-spacing: 0.14em; }
+.metaGrid strong { display: block; color: rgba(255,255,255,0.85); font-size: 14px; line-height: 1.45; font-weight: 500; }
+.body section { margin-top: 27px; }
+.body h3 { margin: 0 0 10px; color: #fff; font: 500 25px/1.1 var(--font-display), Georgia, serif; }
+.body h3::after { content: ""; display: block; width: 32px; height: 3px; margin-top: 10px; background: #f2c358; }
+.body p,
+.body li { color: rgba(255,255,255,0.74); font-size: 15px; line-height: 1.7; }
+.body p { margin: 0; }
+.body ul { margin: 8px 0 0; padding-left: 19px; }
+
+@media (max-width: 800px) { .hero { min-height: 290px; } .body { padding: 25px 20px 34px; } .metaGrid { grid-template-columns: 1fr 1fr; } .metaGrid div:nth-child(2) { border-right: 0; } }
+@media (max-width: 520px) { .metaGrid { grid-template-columns: 1fr; } .metaGrid div { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; } .heroText { padding: 25px 20px; } }

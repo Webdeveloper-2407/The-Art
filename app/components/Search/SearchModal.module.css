@@ -1,0 +1,19 @@
+.overlay { position: fixed; inset: 0; z-index: 1200; display: grid; place-items: center; padding: 20px; background: rgba(0,0,0,0.78); backdrop-filter: blur(9px); }
+.dialog { position: relative; width: min(760px, 100%); max-height: min(760px, 90vh); overflow: auto; padding: 38px; border: 1px solid rgba(244,195,82,0.65); border-radius: 22px; background: linear-gradient(160deg, #101923, #050a10); box-shadow: 0 24px 90px rgba(0,0,0,0.56), 0 0 35px rgba(244,195,82,0.1); }
+.close { position: absolute; right: 18px; top: 13px; width: 38px; height: 38px; border: 1px solid rgba(244,195,82,0.4); border-radius: 50%; color: #f4c75b; background: transparent; font-size: 25px; cursor: pointer; }
+.eyebrow { margin: 0; color: #f6c75c; font-size: 11px; font-weight: 800; letter-spacing: 0.32em; }
+.dialog h2 { margin: 8px 0 22px; color: #fff; font: 500 40px/1.05 var(--font-display), Georgia, serif; }
+.searchBox { display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 0 17px; border: 1px solid rgba(255,255,255,0.13); border-radius: 10px; background: rgba(0,0,0,0.32); }
+.searchBox span { color: #f2c04f; font-size: 27px; }
+.searchBox input { width: 100%; border: 0; outline: 0; color: #fff; background: transparent; font-size: 16px; }
+.searchBox input::placeholder { color: rgba(255,255,255,0.42); }
+.results { display: grid; gap: 10px; margin-top: 18px; }
+.result { display: grid; grid-template-columns: 92px 1fr auto; align-items: center; gap: 15px; width: 100%; padding: 9px; border: 1px solid transparent; border-radius: 12px; color: #fff; background: rgba(255,255,255,0.035); text-align: left; cursor: pointer; }
+.result:hover { border-color: rgba(244,195,82,0.42); background: rgba(244,195,82,0.06); }
+.resultImage { width: 92px; height: 68px; object-fit: cover; border-radius: 8px; }
+.result strong { display: block; font-family: var(--font-display), Georgia, serif; font-size: 20px; font-weight: 500; }
+.result small { display: block; margin-top: 5px; color: rgba(255,255,255,0.6); font-size: 12px; }
+.result b { color: #f5c254; font-size: 21px; }
+.empty { margin: 25px 0; color: rgba(255,255,255,0.62); text-align: center; }
+
+@media (max-width: 600px) { .dialog { padding: 30px 18px 20px; } .dialog h2 { font-size: 33px; } .result { grid-template-columns: 75px 1fr auto; } .resultImage { width: 75px; height: 58px; } }

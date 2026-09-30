@@ -1,0 +1,257 @@
+.card {
+  overflow: hidden;
+  border: 1px solid rgba(224, 170, 57, 0.64);
+  border-radius: 24px;
+  background: linear-gradient(180deg, #09121a 0%, #04090f 100%);
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.28);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(245, 194, 83, 0.98);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35), 0 0 34px rgba(225, 172, 61, 0.12);
+}
+
+.imageWrap {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+  background: #0a141d;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 600ms cubic-bezier(.2,.75,.25,1), filter 300ms ease;
+}
+
+.card:hover .image {
+  transform: scale(1.055);
+  filter: saturate(1.08) contrast(1.03);
+}
+
+.imageShade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(3, 8, 13, 0.1) 18%, rgba(3, 8, 13, 0.18) 42%, rgba(3, 8, 13, 0.96) 100%),
+    linear-gradient(90deg, rgba(3, 8, 13, 0.28), transparent 50%, rgba(3, 8, 13, 0.18));
+  pointer-events: none;
+}
+
+.imageFallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 28px;
+  color: #fff;
+  isolation: isolate;
+}
+
+.fallbackGrid {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 34px 34px;
+  transform: perspective(600px) rotateX(58deg) scale(1.2) translateY(80px);
+  transform-origin: bottom;
+  opacity: .8;
+  z-index: -1;
+}
+
+.fallbackKicker {
+  color: rgba(255,255,255,0.74);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.fallbackMonogram {
+  width: 66px;
+  height: 66px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(245, 194, 83, .55);
+  border-radius: 18px;
+  background: rgba(4, 9, 14, .36);
+  color: #f4c45d;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 26px;
+}
+
+.imageFallback strong {
+  max-width: 86%;
+  color: #fff;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(24px, 2.3vw, 34px);
+  line-height: 1.03;
+}
+
+.imageFallback > span:last-child {
+  color: rgba(255,255,255,.72);
+  font-size: 12px;
+}
+
+.ancient { background: radial-gradient(circle at 25% 15%, #8c5d2a 0%, #2f1f17 36%, #0b1118 84%); }
+.palace { background: radial-gradient(circle at 80% 16%, #d49b3b 0%, #5a3820 35%, #0b1118 82%); }
+.temple { background: radial-gradient(circle at 50% 0%, #caa350 0%, #3a2a20 38%, #0b1118 84%); }
+.fortress { background: radial-gradient(circle at 20% 18%, #9b7651 0%, #3b2a20 40%, #0b1118 84%); }
+.religious { background: radial-gradient(circle at 82% 10%, #84756b 0%, #332d2c 42%, #0b1118 84%); }
+.engineering { background: radial-gradient(circle at 30% 15%, #517a96 0%, #203441 38%, #071018 84%); }
+
+.topRow {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.badge,
+.number {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  border: 1px solid rgba(245, 194, 83, 0.5);
+  background: rgba(4, 9, 14, 0.8);
+  color: #f7cc66;
+  border-radius: 999px;
+  padding: 0 12px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.number {
+  color: rgba(255,255,255,0.88);
+  min-width: 44px;
+  justify-content: center;
+}
+
+.imageCaption {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 17px;
+  display: grid;
+  gap: 4px;
+}
+
+.imageCaption span {
+  color: rgba(255,255,255,.62);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .14em;
+}
+
+.imageCaption strong {
+  color: #fff;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(22px, 2.1vw, 30px);
+  font-weight: 500;
+  line-height: 1.04;
+  text-shadow: 0 3px 18px rgba(0,0,0,.38);
+}
+
+.body { padding: 24px 22px 22px; }
+.location {
+  margin: 0 0 9px;
+  color: #f2c55a;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.body h3 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(27px, 2.25vw, 35px);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.style {
+  margin: 9px 0 12px;
+  color: rgba(255,255,255,0.55);
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.details {
+  min-height: 84px;
+  margin: 0;
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 17px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.metaGrid div { display: grid; gap: 5px; }
+.metaGrid span {
+  color: rgba(255,255,255,0.42);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+.metaGrid strong {
+  color: rgba(255,255,255,0.86);
+  font-size: 11px;
+  line-height: 1.38;
+}
+
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.detailsButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 180ms ease;
+}
+
+.detailsButton { border: 1px solid #f2c55a; background: #f2c55a; color: #080b0f; }
+.detailsButton:hover { background: #ffd56f; transform: translateY(-1px); }
+
+@media (max-width: 720px) {
+  .imageWrap { height: 270px; }
+  .body { padding: 20px 18px 18px; }
+  .metaGrid { grid-template-columns: 1fr; }
+  .details { min-height: auto; }
+  .imageCaption strong { font-size: 24px; }
+}

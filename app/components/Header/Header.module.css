@@ -1,0 +1,20 @@
+.siteHeader {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(244, 190, 67, 0.15);
+  background: rgba(3, 8, 13, 0.72);
+  backdrop-filter: blur(14px);
+  transition: background 220ms ease, box-shadow 220ms ease;
+}
+
+.scrolled {
+  background: rgba(3, 8, 13, 0.93);
+  box-shadow: 0 10px 38px rgba(0, 0, 0, 0.28);
+}
+
+@media (max-width: 900px) {
+  .siteHeader {
+    border-bottom-color: rgba(244, 190, 67, 0.22);
+  }
+}

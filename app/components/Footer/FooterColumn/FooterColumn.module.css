@@ -1,0 +1,148 @@
+
+.column {
+  min-width: 0;
+  padding: 0 24px 0 42px;
+  border-left: 1px solid rgba(243, 195, 87, 0.22);
+}
+
+.column h3 {
+  position: relative;
+  margin: 0 0 24px;
+  padding-bottom: 15px;
+
+  color: #f5cf73;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(18px, 1.55vw, 27px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.045em;
+}
+
+.column h3::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 44px;
+  height: 3px;
+  background: #f3c357;
+  content: "";
+}
+
+.column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.column li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  margin: 0;
+  padding: 8px 0 8px 43px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.column li:last-child {
+  border-bottom: 0;
+}
+
+.column li::before {
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #f3c357;
+  font-family: Georgia, serif;
+  font-size: 26px;
+  line-height: 1;
+  content: "◇";
+}
+
+.column li:nth-child(1)::before {
+  content: "⌂";
+}
+
+.column li:nth-child(2)::before {
+  content: "▤";
+}
+
+.column li:nth-child(3)::before {
+  content: "◈";
+}
+
+.column li:nth-child(4)::before {
+  content: "△";
+}
+
+.column li:nth-child(5)::before {
+  content: "⌁";
+}
+
+.column li:nth-child(6)::before {
+  content: "♧";
+}
+
+.column li:nth-child(7)::before {
+  content: "✣";
+}
+
+.column a,
+.column button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #e7eaf0;
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 180ms ease;
+}
+
+.column a:hover,
+.column button:hover {
+  color: #f5cb66;
+}
+
+@media (min-width: 1400px) {
+  .column {
+    padding-right: 30px;
+    padding-left: 60px;
+  }
+
+  .column li {
+    min-height: 47px;
+  }
+
+  .column a,
+  .column button {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .column {
+    padding-left: 26px;
+    padding-right: 16px;
+  }
+}
+
+@media (max-width: 650px) {
+  .column {
+    padding-left: 20px;
+    padding-right: 0;
+  }
+
+  .column h3 {
+    font-size: 21px;
+  }
+
+  .column li {
+    min-height: 44px;
+  }
+}

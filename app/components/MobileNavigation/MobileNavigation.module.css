@@ -1,0 +1,30 @@
+.panel {
+  border-top: 1px solid rgba(244, 190, 67, 0.12);
+  background: rgba(4, 10, 16, 0.98);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.3);
+}
+
+.nav {
+  width: min(100% - 28px, 600px);
+  margin: 0 auto;
+  display: grid;
+  padding: 10px 0 16px;
+}
+
+.nav a {
+  padding: 14px 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.nav a.active {
+  color: #f8c75e;
+}
+
+@media (min-width: 901px) {
+  .panel { display: none; }
+}

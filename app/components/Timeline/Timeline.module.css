@@ -1,0 +1,268 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 96px 0 120px;
+  background: #04090f;
+}
+
+.backdrop {
+  position: absolute;
+  z-index: -2;
+  inset: 0 0 auto 0;
+  height: 520px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(4, 9, 15, 0.12) 0%,
+      rgba(4, 9, 15, 0.30) 42%,
+      rgba(4, 9, 15, 0.84) 86%,
+      #04090f 100%
+    ),
+    url("../images/wonders-bg.png") center top / cover no-repeat;
+
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.section::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 360px 0 0;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(244, 194, 86, 0.06),
+      transparent 24%
+    ),
+    #04090f;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  width: min(1800px, calc(100% - 72px));
+  margin: 0 auto;
+}
+
+.heading {
+  max-width: 1180px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.heading p {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.48em;
+}
+
+.heading h2 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(48px, 5.1vw, 76px);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.heading h2 em {
+  color: #f4c256;
+  font-style: normal;
+}
+
+.heading span {
+  display: block;
+  margin-top: 17px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  max-width: 1760px;
+  margin: 0 auto 56px;
+}
+
+.tab {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 20px;
+
+  border: 1px solid rgba(173, 187, 202, 0.78);
+  border-radius: 999px;
+
+  color: rgba(255, 255, 255, 0.94);
+  background: rgba(4, 9, 15, 0.72);
+
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+.tab > span {
+  color: #f6c757;
+  font-size: 19px;
+}
+
+.tab:hover {
+  border-color: #f0bf4d;
+}
+
+.tabActive {
+  color: #0a0d0f;
+  background: #f4c65b;
+  border-color: #f4c65b;
+  box-shadow: 0 0 28px rgba(244, 198, 91, 0.18);
+}
+
+.tabActive > span {
+  color: #101214;
+}
+
+/*
+  IMPORTANT:
+  There is only ONE date/card grid per timeline row.
+  The old version added another 180px outer column,
+  which pushed the cards too far to the right.
+*/
+.timelineArea {
+  position: relative;
+  width: 100%;
+}
+
+.items {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.rail {
+  position: absolute;
+  z-index: 1;
+
+  left: 24px;
+  top: 0;
+  bottom: 0;
+
+  width: 2px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #f2c04e 0%,
+      rgba(242, 192, 78, 0.98) 88%,
+      rgba(242, 192, 78, 0.08) 100%
+    );
+
+  box-shadow: 0 0 18px rgba(242, 192, 78, 0.28);
+  pointer-events: none;
+}
+
+.rail::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 0;
+
+  width: 18px;
+  height: 18px;
+
+  border: 2px solid #f0c056;
+  border-radius: 50%;
+  background: #091016;
+
+  box-shadow: 0 0 20px rgba(240, 192, 86, 0.28);
+}
+
+.empty {
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+  padding: 40px;
+
+  border: 1px solid rgba(240, 192, 86, 0.25);
+  border-radius: 18px;
+
+  color: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: min(100% - 48px, 1160px);
+  }
+
+  .rail {
+    left: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    width: min(100% - 36px, 860px);
+  }
+
+  .heading h2 {
+    font-size: 54px;
+  }
+
+  .heading span {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 700px) {
+  .section {
+    padding: 78px 0 90px;
+  }
+
+  .container {
+    width: min(100% - 28px, 640px);
+  }
+
+  .heading p {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+  }
+
+  .heading h2 {
+    font-size: 42px;
+  }
+
+  .heading span {
+    font-size: 15px;
+  }
+
+  .tabs {
+    gap: 9px;
+    margin-bottom: 38px;
+  }
+
+  .tab {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .rail {
+    display: none;
+  }
+}
